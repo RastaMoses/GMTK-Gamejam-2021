@@ -7,6 +7,7 @@ public class CharacterController : MonoBehaviour
     //Serialize params
     [SerializeField] float rotateSpeed;
     [SerializeField] float boostForce = 5f;
+    [SerializeField] float maxSpeed = 100f;
 
 
     //State
@@ -28,8 +29,12 @@ public class CharacterController : MonoBehaviour
 
         
         transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(new Vector3(0f, 0f, angle)),rotateSpeed);
-        
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Boost();
+        }
+        
     }
 
     float AngleBetweenPoints(Vector2 a, Vector2 b)
@@ -40,17 +45,19 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Boost();
-        }
+        
     }
 
     void Boost()
     {
-        rb.AddRelativeForce(Vector3.left * boostForce);
+        if (rb.velocity.magnitude > maxSpeed)
+        {
+            return;
+        }
+        rb.AddRelativeForce(Vector3.left * boostForce * Time.fixedDeltaTime);
     }
 
+    
 
 
 
