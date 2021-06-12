@@ -6,6 +6,7 @@ public class CharacterController : MonoBehaviour
 {
     //Serialize params
     [SerializeField] float rotateSpeed;
+    [SerializeField] float boostForce = 5f;
 
 
     //State
@@ -13,7 +14,12 @@ public class CharacterController : MonoBehaviour
 
     //cached comp
     Rigidbody rb;
-    void Update()
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+    void FixedUpdate()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
         
@@ -32,11 +38,23 @@ public class CharacterController : MonoBehaviour
     }
 
 
-
-    private void Start()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody>();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Boost();
+        }
     }
-    
+
+    void Boost()
+    {
+        rb.AddRelativeForce(Vector3.left * boostForce);
+    }
+
+
+
+
+
+
 }
 
