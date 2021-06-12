@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {   
-    public GameObject[] objects;
+    public GameObject block;
+    [SerializeField] [Range(0,300)] int spawnChance = 64;
     public float elapsedTime = 0.0f;
     public float secondsBetweenSpawns = 1.5f;
     public bool spawn;
@@ -15,9 +16,12 @@ public class LevelGeneration : MonoBehaviour
     }
     private void SpawnBlocks()
     {
-        int rand = Random.Range(0, objects.Length);
-        GameObject go = Instantiate(objects[rand], transform.position, Quaternion.identity);
-        go.transform.SetParent(gameObject.transform);
+        int rand = Random.Range(0, spawnChance);
+        if(rand == 0)
+        {
+            GameObject go = Instantiate(block, transform.position, Quaternion.identity);
+            go.transform.SetParent(gameObject.transform);
+        }
     }
 
     private IEnumerator Countdown()
