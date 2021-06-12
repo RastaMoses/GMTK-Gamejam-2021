@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 385187023}
   - component: {fileID: 385187022}
   - component: {fileID: 385187025}
+  - component: {fileID: 385187026}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -201,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385187021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.4, z: -13.45}
+  m_LocalPosition: {x: 0, y: -1.4, z: -20.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -239,6 +240,28 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &385187026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385187021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acfe6b6cfbd88f42a38882494da3631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1280713020}
+  cameraSpeed: 12
+  slowCameraSpeed: 1
+  cameraSpeedChangeVel: 4
+  maxFreeMoveX: 8
+  maxFreeMoveY: 5
+  slowCameraFollowZoneX: 6
+  slowCameraFollowZoneY: 5
+  moveToPlayer: 0
+  currentCameraSpeed: 0
 --- !u!1 &545738517
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280713020}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.000000038259, y: -1.2774, z: -4}
+  m_LocalPosition: {x: 0.000000038259, y: -1.92, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1594958509}
