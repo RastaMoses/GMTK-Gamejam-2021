@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Sticky : MonoBehaviour
 {
+    //[SerializeField] float explosionForce = 5f;
+    //[SerializeField] float explosionRadius = 1f;
     public bool sticksToPlayer;
 
     string originalTag;
@@ -14,9 +16,10 @@ public class Sticky : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var col = collision;
-        Debug.Log("Collision");
+        
         if (col.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            Debug.Log("Collision with Player");
             gameObject.layer = LayerMask.NameToLayer("Player");
             this.gameObject.transform.SetParent(col.collider.gameObject.transform, true);
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -27,6 +30,17 @@ public class Sticky : MonoBehaviour
     }
 
     
-    
+    public void Unstick()
+    {
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+        FindObjectOfType<Player>().gameObject.GetComponent<Rigidbody>().mass -= this.gameObject.GetComponent<Rigidbody>().mass;
+        gameObject.layer = LayerMask.NameToLayer("Blocks");
+        gameObject.transform.parent = null;
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<Sticky>().Unstick();
+        }
+        //GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius);
+    }
     
 }
