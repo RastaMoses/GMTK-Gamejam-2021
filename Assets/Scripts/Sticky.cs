@@ -16,9 +16,10 @@ public class Sticky : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var col = collision;
-        Debug.Log("Collision");
+        
         if (col.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            Debug.Log("Collision with Player");
             gameObject.layer = LayerMask.NameToLayer("Player");
             this.gameObject.transform.SetParent(col.collider.gameObject.transform, true);
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;

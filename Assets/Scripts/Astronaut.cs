@@ -13,15 +13,20 @@ public class Astronaut : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<DockingBay>())
+        if (other.GetComponent<DockingBay>() && !saved)
         {
+            saved = true;
+            Debug.Log("Collide with Dock");
+            GetComponent<Sticky>().enabled = false;
             foreach (Transform child in transform)
             {
                 child.GetComponent<Sticky>().Unstick();
             }
+
             transform.parent = null;
             gameObject.layer = 1;
-            saved = true;
+            
+            FindObjectOfType<Game>().ScoreIncrease();
             dockPos = other.GetComponent<DockingBay>().GetDockPosition();
             StartCoroutine(Save());
 
@@ -38,11 +43,13 @@ public class Astronaut : MonoBehaviour
             {
                 reachedDock = true;
             }
+
+            transform.parent = null;
             yield return new WaitForFixedUpdate();
         }
         if (reachedDock)
         {
-            FindObjectOfType<Game>().ScoreIncrease();
+            
             Destroy(gameObject);
         }
         
