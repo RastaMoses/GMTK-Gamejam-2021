@@ -17,15 +17,11 @@ public class CharacterController : MonoBehaviour
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
         
-        //Mouse Position in the world. It's important to give it some distance from the camera. 
-        //If the screen point is calculated right from the exact position of the camera, then it will
-        //just return the exact same position as the camera, which is no good.
-
-        //Angle between mouse and this object
+        
         float angle = AngleBetweenPoints(transform.position, mouseWorldPosition);
 
-        //Ta daa
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        
+        transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(new Vector3(0f, 0f, angle)),rotateSpeed);
         
 
     }
