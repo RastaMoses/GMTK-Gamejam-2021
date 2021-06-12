@@ -13,22 +13,20 @@ public class Sticky : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        var col = collision;
         Debug.Log("Collision");
-        if (collision.collider.CompareTag("Player"))
+        if (col.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            gameObject.tag = "Player";
-            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationY;
-            //gameObject.transform.SetParent(collision.collider.transform, true);
-            gameObject.GetComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
-            Debug.Log("Player Collision");
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            this.gameObject.transform.SetParent(col.collider.gameObject.transform, true);
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+            //Add mass to player
+            FindObjectOfType<Player>().gameObject.GetComponent<Rigidbody>().mass += this.gameObject.GetComponent<Rigidbody>().mass;
         }
     }
 
     
-    private void OnJointBreak(float breakForce)
-    {
-        gameObject.tag = originalTag;
-        gameObject.AddComponent<FixedJoint>();
-    }
+    
     
 }
