@@ -12,6 +12,8 @@ public class Game : MonoBehaviour
     public int score;
     public int multiplier;
     int startingMultiplier = 1;
+    Coroutine multiplierCoroutine;
+    bool coroutineRunning = false;
 
     //Cached Comps
     UIController uIController;
@@ -32,18 +34,23 @@ public class Game : MonoBehaviour
 
     public void ScoreIncrease()
     {
+        if (coroutineRunning)
+        {
+            StopCoroutine(multiplierCoroutine);
+        }
         score = score + (pointsPerSave * multiplier);
         multiplier++;
         uIController.UpdateTexts();
-        StopCoroutine(ResetMultiplier());
-        StartCoroutine(ResetMultiplier());
+        multiplierCoroutine = StartCoroutine(ResetMultiplier());
     }
 
     IEnumerator ResetMultiplier()
     {
+        coroutineRunning = true;
         yield return new WaitForSeconds(secondsUntilMultiplierReset);
         multiplier = startingMultiplier;
         uIController.UpdateTexts();
+        coroutineRunning = false;
     }
 
     public int GetScore()
