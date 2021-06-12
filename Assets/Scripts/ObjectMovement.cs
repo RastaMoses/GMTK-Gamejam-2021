@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ObjectMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    public Rigidbody rb;
     [SerializeField] float speed = 1f; 
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody>(); 
        
     }
 
