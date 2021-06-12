@@ -26,6 +26,8 @@ public class Sticky : MonoBehaviour
 
             //Add mass to player
             FindObjectOfType<Player>().gameObject.GetComponent<Rigidbody>().mass += this.gameObject.GetComponent<Rigidbody>().mass;
+            //Remove velocity
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 
