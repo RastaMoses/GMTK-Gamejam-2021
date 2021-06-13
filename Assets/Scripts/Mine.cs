@@ -30,6 +30,10 @@ public class Mine : MonoBehaviour
             {
                 hitCollider.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 0);
             }
+            if (hitCollider.GetComponent<CharacterController>())
+            {
+                hitCollider.GetComponent<CharacterController>().GetRB().GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 0);
+            }
             
         }
         Destroy(gameObject);

@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3170462179755316263}
   - component: {fileID: 4340954559557060774}
   - component: {fileID: 4340954559557060773}
-  m_Layer: 0
+  - component: {fileID: 241030154763892623}
+  m_Layer: 3
   m_Name: Asteroid_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,3 +114,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.013449741
   m_Center: {x: -0.000014979858, y: -0.00034861913, z: -0.0003092442}
+--- !u!114 &241030154763892623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530614290640795122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c96d66e7d0fee941b35bce6c0c7c90f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sticksToPlayer: 1
+  stickyResetTime: 1

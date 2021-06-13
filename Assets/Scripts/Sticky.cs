@@ -54,7 +54,10 @@ public class Sticky : MonoBehaviour
         
         foreach (Transform child in transform)
         {
-            child.GetComponent<Sticky>().Unstick();
+            if (child.GetComponent<Sticky>())
+            {
+                child.GetComponent<Sticky>().Unstick();
+            }
         }
         //GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius);
     }

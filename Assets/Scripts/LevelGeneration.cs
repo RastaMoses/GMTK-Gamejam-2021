@@ -10,6 +10,10 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] float randomPosZ = 0.1f;
     [SerializeField] float randomRotation = 1f;
     [SerializeField] float randomTorque = 10f;
+    [SerializeField] float randomMinSize = 0.5f;
+    [SerializeField] float randomMaxSize = 1.6f;
+    [SerializeField] float randomSpeedMin = 0f;
+    [SerializeField] float randomSpeedMax = 5f;
     public GameObject[] blocks;
     GameObject block;
     [SerializeField] [Range(0,100)] int spawnChance = 64;
@@ -57,7 +61,13 @@ public class LevelGeneration : MonoBehaviour
 
             GameObject go = Instantiate(block, spawnPos, Quaternion.identity);
 
+            float randomScale = Random.Range(randomMinSize, randomMaxSize);
+            go.transform.localScale = new Vector3(transform.localScale.x * randomScale, transform.localScale.x * randomScale, transform.localScale.x * randomScale);
+
             go.GetComponent<Rigidbody>().AddTorque(spawnTorque * randTorqueForce);
+
+            go.GetComponent<Rigidbody>().velocity = Random.onUnitSphere * Random.Range(randomSpeedMin, randomSpeedMax);
+
             //go.transform.SetParent(gameObject.transform);
         }
     }

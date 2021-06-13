@@ -17,10 +17,13 @@ public class CharacterController : MonoBehaviour
     [SerializeField] GameObject jetpack;
 
 
+
+
     //State
     bool onCooldown = false;
     Vector3 mouseWorldPosition;
     bool tooHeavy = false;
+    float minMass;
 
     //cached comp
     public Rigidbody rb;
@@ -28,6 +31,7 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
         //rb = GetComponent<Rigidbody>();
+        minMass = rb.mass;
     }
     void FixedUpdate()
     {
@@ -135,8 +139,10 @@ public class CharacterController : MonoBehaviour
     }
 
 
-
-
+    public GameObject GetRB()
+    {
+        return rb.gameObject;
+    }
 
 }
 
