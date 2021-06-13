@@ -113,7 +113,9 @@ public class CharacterController : MonoBehaviour
             {
                 child.GetComponent<Sticky>().Unstick();
             }
+            
         }
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, ejectRadius);
         foreach (var hitCollider in hitColliders)
         {
@@ -128,6 +130,7 @@ public class CharacterController : MonoBehaviour
             }
 
         }
+        GetComponent<SFX>().EjectSFX();
         StartCoroutine(ResetEject());
     }
 

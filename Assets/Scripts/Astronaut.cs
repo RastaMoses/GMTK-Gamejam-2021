@@ -46,6 +46,7 @@ public class Astronaut : MonoBehaviour
 
             transform.parent = null;
             yield return new WaitForFixedUpdate();
+            GetComponent<SFX>().SaveSFX();
         }
         if (reachedDock)
         {
