@@ -24,6 +24,11 @@ public class Sticky : MonoBehaviour
 
         if (col.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            if (FindObjectOfType<CharacterController>().GetHeavy())
+            {
+                Unstick();
+                return;
+            }
             gameObject.layer = LayerMask.NameToLayer("Player");
             this.gameObject.transform.SetParent(col.collider.gameObject.transform, true);
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
