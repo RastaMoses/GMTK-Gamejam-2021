@@ -14,6 +14,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float ejectRadius = 5f;
     [SerializeField] float ejectCooldown = 10f;
 
+    [SerializeField] GameObject jetpack;
+
 
     //State
     bool onCooldown = false;
@@ -21,11 +23,11 @@ public class CharacterController : MonoBehaviour
     bool tooHeavy = false;
 
     //cached comp
-    Rigidbody rb;
+    public Rigidbody rb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
     void FixedUpdate()
     {
@@ -45,12 +47,14 @@ public class CharacterController : MonoBehaviour
         mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 100f);
 
 
-        float angle = AngleBetweenPoints(transform.position, mouseWorldPosition);
+        float angle = AngleBetweenPoints(jetpack.transform.position, mouseWorldPosition);
 
         
-        transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(new Vector3(0f, 0f, angle)),rotateSpeed);
+        jetpack.transform.rotation = Quaternion.RotateTowards(jetpack.transform.rotation,Quaternion.Euler(new Vector3(angle, -90f, 0f)),rotateSpeed);
+
         
 
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(new Vector3(0, 0, Mathf.Asin(horizontal))), rotateSpeed * Time.fixedDeltaTime);
         
 
         
@@ -73,20 +77,24 @@ public class CharacterController : MonoBehaviour
             }
 
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            Boost();
+            jetpack.GetComponent<Jetpack>().Boost(rb, maxSpeed, boostForce);
         }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(0, 0, -rotateSpeed * Time.deltaTime);
+        }
+
     }
 
-    void Boost()
-    {
-        if (rb.velocity.magnitude > maxSpeed)
-        {
-            return;
-        }
-        rb.AddRelativeForce(Vector3.left * boostForce * Time.deltaTime);
-    }
+    
 
     public bool GetHeavy()
     {
