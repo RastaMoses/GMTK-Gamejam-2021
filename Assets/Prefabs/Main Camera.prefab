@@ -133,9 +133,12 @@ MonoBehaviour:
   cameraSpeed: 12
   slowCameraSpeed: 1
   cameraSpeedChangeVel: 4
-  maxFreeMoveX: 8
+  maxFreeMoveX: 6
   maxFreeMoveY: 4
-  slowCameraFollowZoneX: 6
+  slowCameraFollowZoneX: 4
   slowCameraFollowZoneY: 3
+  cameraSizeSpeed: 0.7
+  maxCamSize: -59
+  massToSize: 1.5
   moveToPlayer: 0
   currentCameraSpeed: 0

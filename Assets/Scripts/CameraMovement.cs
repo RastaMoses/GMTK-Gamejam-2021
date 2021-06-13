@@ -69,7 +69,6 @@ public class CameraMovement : MonoBehaviour
         playerMass = player.GetComponent<Rigidbody>().mass;
 
         float newCameraZ = -(playerMass * massToSize);
-        Debug.Log(newCameraZ);
         newCameraZ = Mathf.Clamp(newCameraZ, maxCamSize, originalPosZ);
         var newCamPos = new Vector3(transform.position.x, transform.position.y, newCameraZ);
         transform.position = Vector3.MoveTowards(transform.position, newCamPos, cameraSizeSpeed * Time.deltaTime);
