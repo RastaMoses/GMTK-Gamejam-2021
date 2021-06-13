@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13c7864e33ae836448fa34fc9ef822d8
+guid: 51d3ebafafb3b6942bb0cf5cfb22521e
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
@@ -73,7 +73,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human:
@@ -230,15 +230,15 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: PlayerBlack(Clone)
+    - name: PlayerRed2 (1)(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Armature
-      parentName: PlayerBlack(Clone)
-      position: {x: -0.13004875, y: -0.45593855, z: -0.056257304}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      parentName: PlayerRed2 (1)(Clone)
+      position: {x: -0.011320776, y: -0.45593855, z: -0.09763384}
+      rotation: {x: 0.5, y: 0.49999997, z: 0.5, w: -0.5}
       scale: {x: 100, y: 100, z: 100}
     - name: Spine1
       parentName: Armature
@@ -361,24 +361,24 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Body
-      parentName: PlayerBlack(Clone)
+      parentName: PlayerRed2 (1)(Clone)
       position: {x: -0, y: 0.062990315, z: 0}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      rotation: {x: 0.5, y: 0.49999997, z: 0.5, w: -0.5}
       scale: {x: 133.31012, y: 138.54314, z: 151.82405}
     - name: Headlamp1
-      parentName: PlayerBlack(Clone)
-      position: {x: 0.000015, y: 2.62303, z: 0.38368097}
-      rotation: {x: -0.4094299, y: 0, z: -0, w: 0.9123416}
+      parentName: PlayerRed2 (1)(Clone)
+      position: {x: -0.38271788, y: 2.62303, z: 0.04232457}
+      rotation: {x: -0.2895107, y: -0.6451229, z: -0.28951067, w: 0.64512295}
       scale: {x: 100, y: 100, z: 100}
     - name: Jetpack
-      parentName: PlayerBlack(Clone)
-      position: {x: -1.2322077, y: 0.8814835, z: 0.048515797}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      parentName: PlayerRed2 (1)(Clone)
+      position: {x: -0.051364686, y: 0.8814835, z: -1.259832}
+      rotation: {x: 0.5, y: 0.49999997, z: 0.5, w: -0.5}
       scale: {x: 100, y: 100, z: 100}
     - name: Visor
-      parentName: PlayerBlack(Clone)
-      position: {x: 1.858944, y: 1.7969297, z: 0}
-      rotation: {x: 0.5, y: 0.5, z: -0.5, w: -0.49999997}
+      parentName: PlayerRed2 (1)(Clone)
+      position: {x: 0.007344246, y: 1.7969297, z: 1.8714912}
+      rotation: {x: 0.7071067, y: 0.7071068, z: 0.00000003793077, w: 0.000000068839384}
       scale: {x: 94.78624, y: 100, z: 100}
     armTwist: 0.5
     foreArmTwist: 0.5
@@ -393,7 +393,7 @@ ModelImporter:
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
+  autoGenerateAvatarMappingIfUnspecified: 0
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1

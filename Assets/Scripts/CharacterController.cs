@@ -23,8 +23,14 @@ public class CharacterController : MonoBehaviour
     void FixedUpdate()
     {
         mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 100f);
-        
-        
+        Debug.Log(rb.velocity.magnitude);
+        if (rb.velocity.magnitude > 100)
+        {
+            rb.velocity = Vector3.zero;
+        }
+        mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 100f);
+
+
         float angle = AngleBetweenPoints(transform.position, mouseWorldPosition);
 
         
