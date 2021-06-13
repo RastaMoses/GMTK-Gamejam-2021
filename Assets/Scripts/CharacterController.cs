@@ -22,13 +22,14 @@ public class CharacterController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
+        mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 100f);
         
         
         float angle = AngleBetweenPoints(transform.position, mouseWorldPosition);
 
         
         transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(new Vector3(0f, 0f, angle)),rotateSpeed);
+        
 
         if (Input.GetKey(KeyCode.Space))
         {

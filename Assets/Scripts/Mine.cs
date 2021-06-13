@@ -29,7 +29,6 @@ public class Mine : MonoBehaviour
             if (hitCollider.GetComponent<Rigidbody>())
             {
                 hitCollider.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 0);
-                Debug.Log("Explosion on "+ hitCollider.gameObject.name);
             }
             
         }
