@@ -28,6 +28,7 @@ public class Sticky : MonoBehaviour
             FindObjectOfType<Player>().gameObject.GetComponent<Rigidbody>().mass += this.gameObject.GetComponent<Rigidbody>().mass;
             //Remove velocity
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<Rigidbody>().rotation = Quaternion.Euler(Vector3.zero);
         }
     }
 
