@@ -20,7 +20,10 @@ public class Astronaut : MonoBehaviour
             GetComponent<Sticky>().enabled = false;
             foreach (Transform child in transform)
             {
-                child.GetComponent<Sticky>().Unstick();
+                if (child.GetComponent<Sticky>())
+                {
+                    child.GetComponent<Sticky>().Unstick();
+                }
             }
 
             transform.parent = null;
@@ -46,7 +49,7 @@ public class Astronaut : MonoBehaviour
 
             transform.parent = null;
             yield return new WaitForFixedUpdate();
-            GetComponent<SFX>().SaveSFX();
+            //GetComponent<SFX>().SaveSFX();
         }
         if (reachedDock)
         {

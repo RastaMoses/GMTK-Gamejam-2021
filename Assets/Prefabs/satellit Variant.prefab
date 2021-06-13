@@ -27,23 +27,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 44e3d043ee8626a44ae046c43979c250, type: 3}
---- !u!114 &4402648492641217021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5373325929067107145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c96d66e7d0fee941b35bce6c0c7c90f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sticksToPlayer: 1
-  stickyResetTime: 1
 --- !u!82 &1989913148158372201
 AudioSource:
   m_ObjectHideFlags: 0
@@ -140,6 +126,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4402648492641217021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373325929067107145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c96d66e7d0fee941b35bce6c0c7c90f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sticksToPlayer: 1
+  stickyResetTime: 1
 --- !u!1001 &5066702031805083160
 PrefabInstance:
   m_ObjectHideFlags: 0
