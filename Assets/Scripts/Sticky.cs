@@ -39,6 +39,8 @@ public class Sticky : MonoBehaviour
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             GetComponent<Rigidbody>().freezeRotation = true;
+
+            GetComponent<SFX>().StickSFX();
         }
     }
 
