@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c96d66e7d0fee941b35bce6c0c7c90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sticksToPlayer: 0
+  sticksToPlayer: 1
+  stickyResetTime: 1
 --- !u!54 &5954199037115338515
 Rigidbody:
   m_ObjectHideFlags: 0

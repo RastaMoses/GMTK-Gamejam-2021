@@ -12,9 +12,12 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float maxFreeMoveY = 5f;
     [SerializeField] float slowCameraFollowZoneX = 2f;
     [SerializeField] float slowCameraFollowZoneY = 2f;
+    [SerializeField] float cameraSizeSpeed = 2f;
+    [SerializeField] [Range(0,-200)]float maxCamSize = -10f;
+    [SerializeField] float massToSize = 0.02f;
 
-
-
+    float originalPosZ;
+    float playerMass;
     Vector3 playerPos;
     public bool moveToPlayer = false;
     Vector3 newPos;
@@ -22,7 +25,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-
+        originalPosZ = transform.position.z;
     }
     void Update()
     {
@@ -59,6 +62,17 @@ public class CameraMovement : MonoBehaviour
             currentCameraSpeed -= cameraSpeedChangeVel * Time.deltaTime;
             currentCameraSpeed = Mathf.Clamp(currentCameraSpeed, slowCameraSpeed, cameraSpeed);
         }
+
+
+        //Move further when Player gets bigger
+
+        playerMass = player.GetComponent<Rigidbody>().mass;
+
+        float newCameraZ = -(playerMass * massToSize);
+        Debug.Log(newCameraZ);
+        newCameraZ = Mathf.Clamp(newCameraZ, maxCamSize, originalPosZ);
+        var newCamPos = new Vector3(transform.position.x, transform.position.y, newCameraZ);
+        transform.position = Vector3.MoveTowards(transform.position, newCamPos, cameraSizeSpeed * Time.deltaTime);
             
     }
 }
