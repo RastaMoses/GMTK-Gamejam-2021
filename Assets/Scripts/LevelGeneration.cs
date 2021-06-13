@@ -10,7 +10,8 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField] float randomPosZ = 0.1f;
     [SerializeField] float randomRotation = 1f;
     [SerializeField] float randomTorque = 10f;
-    public GameObject block;
+    public GameObject[] blocks;
+    GameObject block;
     [SerializeField] [Range(0,100)] int spawnChance = 64;
     //public float elapsedTime = 0.0f;
     public float secondsBetweenSpawns = 1.5f;
@@ -22,6 +23,21 @@ public class LevelGeneration : MonoBehaviour
     }
     private void SpawnBlocks()
     {
+        //if multiple variations are there to spawn choose one randomly
+        if (blocks.Length > 1)
+        {
+            var i = Random.Range(0, blocks.Length);
+            block = blocks[i];
+        }
+        else if (blocks.Length == 1)
+        {
+            block = blocks[0];
+        }
+        else
+        {
+            Debug.LogWarning(gameObject.name+ " needs assigned prefab to spawn");
+            return;
+        }
         int rand = Random.Range(0, spawnChance);
         if(rand == 0)
         {
